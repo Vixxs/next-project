@@ -22,7 +22,7 @@
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && npm install && npm run build",
     "deploy": "gh-pages -d example/build",
-    "yalc:build": "npm run sass:build && npm run build &&  yalc publish --private",
+    "yalc:build": "npm run sass:build && npm run build &&  yalc publish --private ../docker/volumes/yalc",
     "sass:build": "sass src && sass src/index.css dist/index.css",
     "sass:watch": "sass -w src",
     "storybook": "start-storybook"

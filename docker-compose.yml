@@ -6,10 +6,12 @@ services:
       context: .
       target: storybook
     container_name: storybook
-    ports:
-      - "3001:3001"
     volumes:
-      - ./my-lib-ui:/usr/app
+      - ./docker/yalc:/usr/yalc
+      - ./my-lib-ui:/usr/app:delegated
+    ports:
+      - "6000:6000"
+    command: npm run storybook
 
   next-app:
     links: 
@@ -18,8 +20,12 @@ services:
       context: .
       target: next-app
     container_name: next-app
-    ports:
-      - "3000:3000"
     volumes:
-      - ./vitrine:/usr/app
+      - ./docker/yalc:/usr/yalc
+      - ./vitrine:/usr/app:delegated
+    ports:
+      - 3000:3000
+      - 9229:9229
+    command: npm run dev
+    
 
